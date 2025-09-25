@@ -1,10 +1,10 @@
 <script>
-  import { get } from "svelte/store";
-  import { lengthenLink } from "../links";
+  import { lengthenLink, unlengthenLink } from "../links";
 
   let link = $state("")
 
   let lengthenedLink = $derived(lengthenLink(link))
+  let unlengthenedLink = $derived(unlengthenLink(lengthenedLink))
   let currentLocation = window.location.pathname
 </script>
 
@@ -15,5 +15,6 @@
   <input type="text" bind:value={link} id="linkInput">
   <p>{link}</p>
   <p>{lengthenedLink}</p>
+  <p>{unlengthenedLink}</p>
   <p>{currentLocation}</p>
 </div>

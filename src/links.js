@@ -42,7 +42,7 @@ const lengthenWithSymbolRep = (char) => {
 
 const lengthenWithASCII = (char) => {
   const characterCode = char.charCodeAt(0);
-  let characterRepresentation;
+  let characterRepresentation = "";
 
   const aAmount =
     (characterCode - (characterCode % URL_SETTINGS.divider)) /
@@ -59,9 +59,20 @@ const unlengthenFromASCII = (bit) => {
 
   const characterCode = aAmount * URL_SETTINGS.divider + hAmount;
   const char = String.fromCharCode(characterCode);
+  return char;
 };
 
 const findKeyForValue = (map, query) => {
+  for (const [key, value] of map) {
+    if (value == query) {
+      return key;
+    } else {
+      console.log(
+        `returned undefined at findKeyForValue with map ${map}, query ${query}`
+      );
+      return undefined;
+    }
+  }
   for (let key_value of map) {
     let key = key_value[0];
     let value = key_value[1];
@@ -85,16 +96,23 @@ const getLengthenedCharacter = (char) => {
 };
 
 const getUnlengthenedBit = (bit) => {
-  let output = "";
+  console.log(bit);
 
-  let matchingCharacterName = findKeyForValue(bit, characterNames);
+  let output = "none";
+
+  let matchingCharacterName = findKeyForValue(characterNames, bit);
   if (matchingCharacterName) {
-    return matchingCharacterName;
+    output = matchingCharacterName;
+    console.log("condition matching character name met");
   } else if (bit.length === 1) {
-    return bit;
-  } else if (isFinite(bit)) {
-    return unlengthenFromASCII(bit);
-  } else return undefined;
+    output = bit;
+    console.log("bit.length met");
+  } else {
+    output = unlengthenFromASCII(bit);
+    console.log(`unlengthenbit met. output ${output}`);
+  }
+
+  return output;
 };
 
 const lengthenLink = (link) => {
