@@ -1,3 +1,5 @@
+const URL_SEPARATOR = ".";
+
 const characterNames = new Map([
   [".", "dot"],
   [":", "colon"],
@@ -48,6 +50,13 @@ const lengthenWithASCII = (char) => {
   return characterRepresentation;
 };
 
+const getUnlengthenedBit = (bit) => {
+  let output = "";
+
+  if (characterNames.has(bit)) {
+  }
+};
+
 const getLengthenedCharacter = (char) => {
   let output = [];
 
@@ -66,8 +75,17 @@ const lengthenLink = (link) => {
     textBits.push(getLengthenedCharacter(char));
   }
 
-  let longLink = textBits.join(".");
+  let longLink = textBits.join(URL_SEPARATOR);
   return longLink;
+};
+
+const decodeLink = (link) => {
+  let textBits = link.split(URL_SEPARATOR);
+
+  for (let bit of textBits) {
+    {
+    }
+  }
 };
 
 export { lengthenLink };
