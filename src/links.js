@@ -107,7 +107,7 @@ const lengthenLink = (link) => {
   return longLink;
 };
 
-const decodeLink = (link) => {
+const unlengthenLink = (link) => {
   let textBits = link.split(URL_SETTINGS.separator);
   let plaintext = "";
   for (let bit of textBits) {
@@ -118,4 +118,4 @@ const decodeLink = (link) => {
   return plaintext;
 };
 
-export { lengthenLink, decodeLink };
+export { lengthenLink, unlengthenLink };
