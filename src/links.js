@@ -1,4 +1,7 @@
-const URL_SEPARATOR = ".";
+const URL_SETTINGS = {
+  separator: ".",
+  divider: 20,
+};
 
 const characterNames = new Map([
   [".", "dot"],
@@ -41,20 +44,32 @@ const lengthenWithASCII = (char) => {
   const characterCode = char.charCodeAt(0);
   let characterRepresentation;
 
-  const divider = 20;
-
-  const aAmount = (characterCode - (characterCode % divider)) / divider;
-  const hAmount = characterCode % divider;
+  const aAmount =
+    (characterCode - (characterCode % URL_SETTINGS.divider)) /
+    URL_SETTINGS.divider;
+  const hAmount = characterCode % URL_SETTINGS.divider;
 
   characterRepresentation = "A".repeat(aAmount) + "H".repeat(hAmount);
   return characterRepresentation;
 };
 
-const getUnlengthenedBit = (bit) => {
-  let output = "";
+const unlengthenFromASCII = (bit) => {
+  const aAmount = bit.match(/A/g);
+  const hAmount = bit.match(/H/g);
 
-  if (characterNames.has(bit)) {
+  const characterCode = aAmount * URL_SETTINGS.divider + hAmount;
+  const char = String.fromCharCode(characterCode);
+};
+
+const findKeyForValue = (map, query) => {
+  for (let key_value of map) {
+    let key = key_value[0];
+    let value = key_value[1];
+    if (value === query) {
+      return key;
+    }
   }
+  return undefined;
 };
 
 const getLengthenedCharacter = (char) => {
@@ -69,23 +84,38 @@ const getLengthenedCharacter = (char) => {
   return output;
 };
 
+const getUnlengthenedBit = (bit) => {
+  let output = "";
+
+  let matchingCharacterName = findKeyForValue(bit, characterNames);
+  if (matchingCharacterName) {
+    return matchingCharacterName;
+  } else if (bit.length === 1) {
+    return bit;
+  } else if (isFinite(bit)) {
+    return unlengthenFromASCII(bit);
+  } else return undefined;
+};
+
 const lengthenLink = (link) => {
   let textBits = [];
   for (const char of link) {
     textBits.push(getLengthenedCharacter(char));
   }
 
-  let longLink = textBits.join(URL_SEPARATOR);
+  let longLink = textBits.join(URL_SETTINGS.separator);
   return longLink;
 };
 
 const decodeLink = (link) => {
-  let textBits = link.split(URL_SEPARATOR);
-
+  let textBits = link.split(URL_SETTINGS.separator);
+  let plaintext = "";
   for (let bit of textBits) {
     {
+      plaintext += getUnlengthenedBit(bit);
     }
   }
+  return plaintext;
 };
 
-export { lengthenLink };
+export { lengthenLink, decodeLink };
