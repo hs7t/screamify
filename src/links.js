@@ -128,7 +128,13 @@ const unlengthenLink = (link) => {
       plaintext += getUnlengthenedBit(bit);
     }
   }
-  return plaintext;
+
+  let result = "";
+  if (!plaintext.match(/https?:\/\//)) {
+    result = "https://" + plaintext;
+  } else result = plaintext;
+
+  return result;
 };
 
 export { lengthenLink, unlengthenLink };
