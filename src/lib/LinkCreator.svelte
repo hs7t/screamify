@@ -7,11 +7,56 @@
   let lengthenerAddress = $derived(window.location.host + "/" + lengthenedLink)
 </script>
 
-<div>
+<div class="pane link-creator">
   <h1>Link too short?</h1>
-  <label for="linkInput">Type in a link:</label>
 
-  <input type="text" bind:value={link} id="linkInput">
-  <p>link: {link}</p>
-  <p>{lengthenerAddress}</p>
+  <div class="lengthener container">
+    <div class="lengthener form">
+      <label for="linkInput">Type in a link:</label>
+      <input type="text" bind:value={link} id="linkInput">
+    </div>
+
+    <div class="lengthener result">
+      <p>{lengthenerAddress}</p>
+    </div>
+  </div>
 </div>
+
+<style>
+  .pane {
+    width: 100%;
+  }
+
+  .lengthener.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .lengthener.form input {
+    padding: 0.8ch;
+    font-family: inherit;
+  }
+
+  .lengthener.result {
+    width: 100%;
+    padding: 0.8ch;
+    overflow-y: auto;
+    background-color: inherit;
+    color: var(--l-color-main);
+    border: solid 1pt var(--l-color-main);
+    border-radius: 4pt;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .lengthener.result::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .lengthener.result p {
+    padding: 0;
+    margin: 0;
+  }
+</style>
