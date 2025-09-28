@@ -8,4 +8,5 @@ body {
     background-color: var(--l-color-background);
     color: var(--l-color-main);
     font-family: "National Park";
+    font-size: 1.2rem;
 }
