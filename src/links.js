@@ -96,7 +96,7 @@ const getLengthenedCharacter = (char) => {
 };
 
 const getUnlengthenedBit = (bit) => {
-  console.log(bit);
+  if (bit === URL_SETTINGS.separator) return;
 
   let output = "none";
 
