@@ -35,6 +35,11 @@
       <button onclick={copyLengthened}>copy</button>
     </div>
   </div>
+
+  <footer>
+    <p>🗣️ screamify by <a href="https://hvii.cc">Ali</a></p>
+    <p><a href="https://github.com/hs7t/screamify">GitHub</a></p>
+  </footer>
 </section>
 
 <style>
@@ -44,6 +49,20 @@
     padding-top: 10vh;
     width: 100%;
     gap: 3rem;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    opacity: 0.8;
+  }
+
+  footer p {
+    padding: 0;
+    margin: 0;
   }
 
   header {
@@ -59,11 +78,15 @@
     border-radius: 5pt;
     transform: rotate(-5deg);
     padding: 0.8ch;
-    transition: all 100ms;
+    transition: all 500ms;
   }
 
   header .title-box:hover {
-    transform: rotate(5deg);
+    transform: rotate(185deg);
+  }
+
+  header .title-box:active, header img:active {
+    transform: scale(1.2);
   }
   
   header .title-box h1 {
@@ -73,6 +96,7 @@
 
   header img {
     width: 30%;
+    transition: all 100ms;
   }
 
   .lengthener.container {
