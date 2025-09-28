@@ -1,10 +1,10 @@
 <script>
-  import { lengthenLink, unlengthenLink } from "../links";
+  import { lengthenLink } from "../links";
 
   let link = $state("")
 
   let lengthenedLink = $derived(lengthenLink(link))
-  let unlengthenedLink = $derived(unlengthenLink(lengthenedLink))
+  let lengthenerAddress = $derived(window.location.host + "/" + lengthenedLink)
 </script>
 
 <div>
@@ -13,6 +13,5 @@
 
   <input type="text" bind:value={link} id="linkInput">
   <p>link: {link}</p>
-  <p>lengthened: {lengthenedLink}</p>
-  <p>unlengthened: {unlengthenedLink}</p>
+  <p>{lengthenerAddress}</p>
 </div>
