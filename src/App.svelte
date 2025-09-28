@@ -3,13 +3,12 @@
   import LinkCreator from "./lib/LinkCreator.svelte";
   import LinkReader from "./lib/LinkReader.svelte";
   let currentLocation = window.location.pathname
-
 </script>
 
 <main>
   {#if currentLocation === "/"}
     <LinkCreator />
   {:else}
-    <LinkReader />
+    <LinkReader {currentLocation} />
   {/if}
 </main>
