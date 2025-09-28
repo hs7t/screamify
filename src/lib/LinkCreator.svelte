@@ -5,7 +5,6 @@
 
   let lengthenedLink = $derived(lengthenLink(link))
   let unlengthenedLink = $derived(unlengthenLink(lengthenedLink))
-  let currentLocation = window.location.pathname
 </script>
 
 <div>
@@ -16,5 +15,4 @@
   <p>link: {link}</p>
   <p>lengthened: {lengthenedLink}</p>
   <p>unlengthened: {unlengthenedLink}</p>
-  <p>crrloc: {currentLocation}</p>
 </div>
