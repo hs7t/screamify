@@ -7,7 +7,7 @@
 </script>
 
 <main>
-  {#if currentLocation = "/"}
+  {#if currentLocation === "/"}
     <LinkCreator />
   {:else}
     <LinkReader />
