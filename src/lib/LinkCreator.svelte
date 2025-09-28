@@ -5,6 +5,10 @@
 
   let lengthenedLink = $derived(lengthenLink(link))
   let lengthenerAddress = $derived(window.location.host + "/" + lengthenedLink)
+
+  function copyLengthened() {
+    navigator.clipboard.writeText(lengthenerAddress)
+  }
 </script>
 
 <section class="link-creator">
@@ -22,8 +26,11 @@
       <input type="text" bind:value={link} id="linkInput">
     </div>
 
-    <div class="lengthener result">
-      <p>{lengthenerAddress}</p>
+    <div class="lengthener result container">
+      <div class="lengthener result text">
+        <p>{lengthenerAddress}</p>
+      </div>
+      <button onclick={copyLengthened}>copy</button>
     </div>
   </div>
 </section>
@@ -75,11 +82,37 @@
   }
 
   .lengthener.form input:focus {
-    outline: dotted 1pt var(--l-color-main);
+    outline: dashed 1pt var(--l-color-main);
     outline-offset: 2pt;
   } 
 
-  .lengthener.result {
+  .lengthener.result.container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .lengthener.result button {
+    border: solid 1pt var(--l-color-main);
+    background-color: var(--l-color-background-overlay);
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 4pt;
+    padding: 0.8ch;
+    transition: all 120ms;
+  }
+
+  .lengthener.result button:hover {
+    transform: scale(0.95);
+    outline: solid 1pt var(--l-color-main);
+    outline-offset: 2pt;
+  }
+
+  .lengthener.result button:active {
+    transform: scale(1.1) rotate(-2deg);
+    outline: none;
+  }
+
+  .lengthener.result.text {
     flex-grow: 1;
     padding: 0.8ch;
     overflow-y: auto;
@@ -96,7 +129,7 @@
     display: none;
   }
   
-  .lengthener.result p {
+  .lengthener.result.text p {
     padding: 0;
     margin: 0;
   }
