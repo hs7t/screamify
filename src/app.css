@@ -1,0 +1,10 @@
+:root {
+    --l-color-background: #FFD670;
+    --l-color-background-overlay: #fffbf3;
+    --l-color-main: #0F0F0F;
+}
+
+body {
+    background-color: var(--l-color-background);
+    color: var(--l-color-main);
+}
