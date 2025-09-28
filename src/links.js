@@ -54,8 +54,16 @@ const lengthenWithASCII = (char) => {
 };
 
 const unlengthenFromASCII = (bit) => {
-  const aAmount = bit.match(/A/g)?.length;
-  const hAmount = bit.match(/H/g)?.length;
+  function checkAmount(letter) {
+    const regex = new RegExp(`${letter}`, "g");
+    let amount = bit.match(regex)?.length;
+    if (!isFinite(amount)) amount = 0;
+
+    return amount;
+  }
+
+  const aAmount = checkAmount("A");
+  const hAmount = checkAmount("H");
 
   let characterCode = undefined;
   if (aAmount || hAmount) {
@@ -103,7 +111,7 @@ const getUnlengthenedBit = (bit) => {
     console.log("bit.length met");
   } else {
     output = unlengthenFromASCII(bit);
-    console.log(`unlengthenbit met. output ${output}`);
+    console.log(`unlengthenbit met. output ${output}, bit ${bit}`);
   }
 
   console.log(output);
