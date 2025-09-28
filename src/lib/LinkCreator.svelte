@@ -13,8 +13,8 @@
   <label for="linkInput">Type in a link:</label>
 
   <input type="text" bind:value={link} id="linkInput">
-  <p>{link}</p>
-  <p>{lengthenedLink}</p>
-  <p>{unlengthenedLink}</p>
-  <p>{currentLocation}</p>
+  <p>link: {link}</p>
+  <p>lengthened: {lengthenedLink}</p>
+  <p>unlengthened: {unlengthenedLink}</p>
+  <p>crrloc: {currentLocation}</p>
 </div>

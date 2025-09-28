@@ -101,6 +101,10 @@ const getUnlengthenedBit = (bit) => {
   let output = "none";
 
   let matchingCharacterName = findKeyForValue(characterNames, bit);
+
+  console.log("character name: " + matchingCharacterName);
+  console.log("bit.length: " + bit.length);
+  console.log("unlengthened: " + unlengthenFromASCII(bit));
   if (matchingCharacterName) {
     output = matchingCharacterName;
     console.log("condition matching character name met");
@@ -112,6 +116,7 @@ const getUnlengthenedBit = (bit) => {
     console.log(`unlengthenbit met. output ${output}`);
   }
 
+  console.log(output);
   return output;
 };
 
