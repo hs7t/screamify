@@ -33,10 +33,24 @@
     gap: 0.5rem;
   }
 
+  .lengthener.form label {
+    margin-right: 0.5rem;
+  }
+
   .lengthener.form input {
     padding: 0.8ch;
+    font-size: 0.8em;
     font-family: inherit;
+    background-color: var(--l-color-background-overlay);
+    border: solid 1pt var(--l-color-main);
+    border-radius: 4pt;
+    transition: all 80ms;
   }
+
+  .lengthener.form input:focus {
+    outline: dotted 1pt var(--l-color-main);
+    outline-offset: 2pt;
+  } 
 
   .lengthener.result {
     width: 100%;
