@@ -16,7 +16,7 @@
 
 <style>
   main {
-    width: 70%;
+    width: clamp(40vw, 500px, 90vw);
     margin: auto;
     justify-content: center;
   }
