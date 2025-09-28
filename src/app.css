@@ -11,3 +11,7 @@ body {
     font-family: "National Park";
     font-size: 1.2rem;
 }
+
+a {
+    color: inherit;
+}
