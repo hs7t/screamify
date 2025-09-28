@@ -54,10 +54,13 @@ const lengthenWithASCII = (char) => {
 };
 
 const unlengthenFromASCII = (bit) => {
-  const aAmount = bit.match(/A/g);
-  const hAmount = bit.match(/H/g);
+  const aAmount = bit.match(/A/g)?.length;
+  const hAmount = bit.match(/H/g)?.length;
 
-  const characterCode = aAmount * URL_SETTINGS.divider + hAmount;
+  let characterCode = undefined;
+  if (aAmount || hAmount) {
+    characterCode = aAmount * URL_SETTINGS.divider + hAmount;
+  }
   const char = String.fromCharCode(characterCode);
   return char;
 };
@@ -66,20 +69,9 @@ const findKeyForValue = (map, query) => {
   for (const [key, value] of map) {
     if (value == query) {
       return key;
-    } else {
-      console.log(
-        `returned undefined at findKeyForValue with map ${map}, query ${query}`
-      );
-      return undefined;
     }
   }
-  for (let key_value of map) {
-    let key = key_value[0];
-    let value = key_value[1];
-    if (value === query) {
-      return key;
-    }
-  }
+
   return undefined;
 };
 
@@ -102,9 +94,6 @@ const getUnlengthenedBit = (bit) => {
 
   let matchingCharacterName = findKeyForValue(characterNames, bit);
 
-  console.log("character name: " + matchingCharacterName);
-  console.log("bit.length: " + bit.length);
-  console.log("unlengthened: " + unlengthenFromASCII(bit));
   if (matchingCharacterName) {
     output = matchingCharacterName;
     console.log("condition matching character name met");
