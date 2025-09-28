@@ -13,7 +13,9 @@
 
 <section class="link-creator">
   <header>
-    <h1>Link too short?</h1>
+    <span class="title-box">
+      <h1>Link too short?</h1>
+    </span>
     <img 
       src="https://hc-cdn.hel1.your-objectstorage.com/s/v3/6a8e54dbcb7a0d25e3e488be17a56e87c0c3b356_largebobbycolor.svg" 
       alt="a pineapple-shaped character with a bubble reading 'https'"
@@ -39,6 +41,7 @@
   section {
     display: flex;
     flex-direction: column;
+    padding-top: 10vh;
     width: 100%;
     gap: 3rem;
   }
@@ -50,6 +53,24 @@
     justify-content: center;
     align-items: center;
   }
+
+  header .title-box {
+    background-color: white;
+    border-radius: 5pt;
+    transform: rotate(-5deg);
+    padding: 0.8ch;
+    transition: all 100ms;
+  }
+
+  header .title-box:hover {
+    transform: rotate(5deg);
+  }
+  
+  header .title-box h1 {
+    margin: 0;
+    padding: 0;
+  }
+
   header img {
     width: 30%;
   }
@@ -116,7 +137,7 @@
     flex-grow: 1;
     padding: 0.8ch;
     overflow-y: auto;
-    background-color: inherit;
+    background-color: var(--l-color-background-overlay-secondary);
     color: var(--l-color-main);
     border: dashed 1pt var(--l-color-main);
     border-radius: 4pt;
